@@ -30,9 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-# Ecosystem
   get: ^4.6.6
+  get_storage: ^2.1.1
+
 
 dev_dependencies:
   flutter_lints: ^3.0.1
@@ -74,6 +74,5 @@ flutter:
         - asset: assets/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf
         - asset: assets/fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf
           weight: 700
-
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
