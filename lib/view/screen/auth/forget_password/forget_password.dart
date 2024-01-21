@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../core/constant/color.dart';
-import '../../../../logic/controller/auth/forget_password_controller.dart';
+import '../../../../logic/controller/auth/forget_password_controller/forget_password_controller.dart';
 import '../../../widget/auth/custom_button_auth.dart';
 import '../../../widget/auth/custom_text_body_auth.dart';
 import '../../../widget/auth/custom_text_form_auth.dart';

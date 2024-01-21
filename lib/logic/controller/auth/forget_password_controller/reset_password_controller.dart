@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../core/constant/routes/app_routes.dart';
+import '../../../../core/constant/routes/app_routes.dart';
 
 abstract class ResetPasswordController extends GetxController {
   resetPassword();
@@ -17,7 +17,7 @@ class ResetPasswordControllerImp extends ResetPasswordController {
 
   @override
   goToSuccessResetPassword() {
-    Get.offNamed(AppRoute.verifyCode);
+    Get.offNamed(AppRoute.successResetpassword);
   }
 
   @override
