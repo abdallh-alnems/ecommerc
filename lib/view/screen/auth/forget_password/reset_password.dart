@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constant/color.dart';
+import '../../../../core/functions/vaild_input.dart';
 import '../../../../logic/controller/auth/forget_password_controller/reset_password_controller.dart';
 import '../../../widget/auth/custom_button_auth.dart';
 import '../../../widget/auth/custom_text_body_auth.dart';
@@ -35,16 +36,25 @@ class ResetPassword extends StatelessWidget {
          CustomTextBodyAuth(text: "35".tr),
           const SizedBox(height: 15),
             CustomTextFormAuth(
+               isNumber: false,
+                      valid: (val) {
+                        return validInput(val!, 3, 40, "password");
+                      },
             myController: controller.password,
-            hintText: "Enter Your Password",
+            hintText: "13".tr,
             iconData: Icons.lock_outline,
-            labelText: "Password",
+            labelText: "19".tr,
             // mycontroller: ,
           ),   CustomTextFormAuth(
+              isNumber: false,
+
+                      valid: (val) {
+                        return validInput(val!, 3, 40, "password");
+                      },
             myController: controller.password,
-            hintText: "Re Enter Your Password",
+            hintText: "Re" + " " + "13".tr,
             iconData: Icons.lock_outline,
-            labelText: "Password",
+            labelText:  "19".tr,
             
           ),
           CustomButtomAuth(text: "33".tr, onPressed: () {

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-
 import '../../../../core/constant/routes/app_routes.dart';
 
 abstract class ResetPasswordController extends GetxController {

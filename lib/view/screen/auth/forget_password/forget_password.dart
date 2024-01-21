@@ -31,19 +31,21 @@ class ForgetPassword extends StatelessWidget {
           const SizedBox(height: 20),
           const CustomTextTitleAuth(text: "Check Email"),
           const SizedBox(height: 10),
-          const CustomTextBodyAuth(
-              text:
-                  "Sign Up With Your Email And Password OR Continue With Social Media"),
-          const SizedBox(height: 15),
+           CustomTextBodyAuth(
+              text:"29".tr
+                    )     ,
+                         const SizedBox(height: 15),
           CustomTextFormAuth(
+            isNumber: false,
+                        valid: (val) {},
             myController: controller.email,
-            hintText: "Enter Your Email",
+            hintText: "12".tr,
             iconData: Icons.email_outlined,
-            labelText: "Email",
+            labelText: "18".tr,
    
           ),
           CustomButtomAuth(
-              text: "Check",
+              text: "30".tr,
               onPressed: () {
                 controller.goToVerifyCode();
               }),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../view/screen/auth/check_email.dart';
 import '../../../view/screen/auth/forget_password/forget_password.dart';
 import '../../../view/screen/auth/forget_password/reset_password.dart';
 import '../../../view/screen/auth/forget_password/success_resetpassword.dart';
@@ -18,7 +17,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoute.forgetPassword: (context) => const ForgetPassword(),
   AppRoute.successResetpassword: (context) => const SuccessResetPassword(),
   AppRoute.successSignUp: (context) => const SuccessSignUp(),
-  AppRoute.checkemail: (context) => const CheckEmail(),
   // onBoarding
   AppRoute.onBoarding : (context) => const OnBoarding(),
    AppRoute.verifyCode: (context) => const VerifyCode(),
