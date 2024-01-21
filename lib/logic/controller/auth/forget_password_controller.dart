@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../../../core/constant/routes/app_routes.dart';
 
 abstract class ForgetPasswordController extends GetxController {
-  checkemail();
+  checkEmail();
   goToVerifyCode();
 }
 
@@ -12,7 +12,7 @@ class ForgetPasswordControllerImp extends ForgetPasswordController {
   late TextEditingController email; 
 
   @override
-  checkemail() {}
+  checkEmail() {}
 
   @override
   goToVerifyCode() {
