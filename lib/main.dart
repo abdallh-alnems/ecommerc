@@ -5,6 +5,7 @@ import 'core/constant/routes/get_page.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
+import 'logic/bindings/intial_bindings.dart';
 import 'view/screen/auth/login.dart';
 import 'view/screen/language.dart';
 import 'view/screen/onboarding.dart';
@@ -24,10 +25,10 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'ecommerc',
-        theme: controller.appTheme,
+      theme: controller.appTheme,
       translations: MyTranslation(),
       locale: controller.language,
-     
+      initialBinding: InitialBindings(),
       getPages: routes,
     );
   }
