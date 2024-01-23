@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../core/constant/routes/app_routes.dart';
+import '../../../core/constant/routes/route.dart';
 
 abstract class VerifyCodeSignUpController extends GetxController {
   checkCode();

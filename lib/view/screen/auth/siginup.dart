@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/color.dart';
+import '../../../core/functions/alert_exit_app.dart';
 import '../../../core/functions/vaild_input.dart';
 import '../../../logic/controller/auth/siginup_controller.dart';
 import '../../widget/auth/custom_button_auth.dart';
@@ -26,7 +27,12 @@ class SignUp extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: GetBuilder<SignUpControllerImp>(
+      body: PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        alertExitApp();
+      },
+      child: GetBuilder<SignUpControllerImp>(
         builder: (controller) => Container(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
           child: Form(
@@ -96,7 +102,8 @@ class SignUp extends StatelessWidget {
             ]),
           ),
         ),
-      ),
+      ) ,
+    ),
     );
   }
 }

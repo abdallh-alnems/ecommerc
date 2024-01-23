@@ -32,6 +32,8 @@ class CustomTextFormAuth extends StatelessWidget {
             : TextInputType.text,
         controller: myController,
          validator: valid,
+             obscureText: obscureText == null || obscureText == false  ? false : true,
+
         decoration: InputDecoration(
             hintText: hintText,
             hintStyle: const TextStyle(fontSize: 14),
@@ -41,7 +43,7 @@ class CustomTextFormAuth extends StatelessWidget {
             label: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 9),
                 child: Text(labelText)),
-            suffixIcon: Icon(iconData),
+            suffixIcon: GestureDetector(child: Icon(iconData), onTap: onTapIcon),
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
       ),

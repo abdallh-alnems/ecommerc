@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../core/constant/routes/app_routes.dart';
+import '../../core/constant/routes/route.dart';
 import '../../core/localization/changelocal.dart';
 import '../widget/language/custombuttomlang.dart';
 

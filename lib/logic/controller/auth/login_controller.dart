@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../core/constant/routes/app_routes.dart';
+import '../../../core/constant/routes/route.dart';
 
 abstract class LoginController extends GetxController {
   login();
@@ -14,6 +14,14 @@ class LoginControllerImp extends LoginController {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController password;
+
+   bool isshowpassword = true;
+
+
+     showPassword() {
+    isshowpassword = isshowpassword == true ? false : true;
+    update();
+  }
 
   @override
   login() {

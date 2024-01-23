@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'core/constant/color.dart';
-import 'core/constant/routes/routes.dart';
+import 'core/constant/routes/get_page.dart';
 import 'core/localization/changelocal.dart';
 import 'core/localization/translation.dart';
 import 'core/services/services.dart';
@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
         theme: controller.appTheme,
       translations: MyTranslation(),
       locale: controller.language,
-      home: Login(),
-      routes: routes,
+     
+      getPages: routes,
     );
   }
 }
