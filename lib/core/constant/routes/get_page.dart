@@ -7,6 +7,7 @@ import '../../../view/screen/auth/login.dart';
 import '../../../view/screen/auth/siginup.dart';
 import '../../../view/screen/auth/success_signup.dart';
 import '../../../view/screen/auth/verify_code_signup.dart';
+import '../../../view/screen/home.dart';
 import '../../../view/screen/language.dart';
 import '../../../view/screen/onboarding.dart';
 import '../../middleware/mymiddleware.dart';
@@ -31,7 +32,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.verfiyCodeSignUp, page: () => const VerfiyCodeSignUp()),
   //
-  // GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
+  GetPage(name: AppRoute.homepage, page: () => const HomePage()),
   // GetPage(name: AppRoute.items, page: () => const Items()),
   // GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
   // GetPage(name: AppRoute.myfavroite, page: () => const MyFavorite()),
