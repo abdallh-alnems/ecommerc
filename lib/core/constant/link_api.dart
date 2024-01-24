@@ -4,7 +4,7 @@ class AppLink {
   // static const String imagestItems = "$imageststatic/items";
 // =============================================================
 //
-  static const String server = "https://nimss.net/ecommerce";
+  static const String server = "https://nimss.net/ecommerce-PHP";
 
  // static const String notification = "$server/notification.php";
 

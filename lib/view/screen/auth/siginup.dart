@@ -52,7 +52,6 @@ class SignUp extends StatelessWidget {
                 hintText: "23".tr,
                 iconData: Icons.person_outline,
                 labelText: "20".tr,
-                // mycontroller: ,
               ),
               CustomTextFormAuth(
                 isNumber: false,
@@ -100,6 +99,8 @@ class SignUp extends StatelessWidget {
                 },
               ),
             ]),
+
+             
           ),
         ),
       ) ,
