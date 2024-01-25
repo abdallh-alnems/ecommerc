@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../../../../core/class/handlingdataview.dart';
+import '../../../../core/class/status_request.dart';
 import '../../../../core/constant/color.dart';
 import '../../../../core/functions/vaild_input.dart';
 import '../../../../logic/controller/auth/forget_password_controller/reset_password_controller.dart';
@@ -14,8 +15,7 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResetPasswordControllerImp controller =
-        Get.put(ResetPasswordControllerImp());
+    Get.put(ResetPasswordControllerImp());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -27,42 +27,53 @@ class ResetPassword extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-        child: ListView(children: [
-          const SizedBox(height: 20),
-          CustomTextTitleAuth(text: "35".tr),
-          const SizedBox(height: 10),
-         CustomTextBodyAuth(text: "35".tr),
-          const SizedBox(height: 15),
-            CustomTextFormAuth(
-               isNumber: false,
-                      valid: (val) {
-                        return validInput(val!, 3, 40, "password");
-                      },
-            myController: controller.password,
-            hintText: "13".tr,
-            iconData: Icons.lock_outline,
-            labelText: "19".tr,
-            // mycontroller: ,
-          ),   CustomTextFormAuth(
-              isNumber: false,
+      body: GetBuilder<ResetPasswordControllerImp>(
+          builder: (controller) => HandlingDataRequest(
+              statusRequest: controller.statusRequest,
+              widget: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+                  child: Form(
+                    key: controller.formstate,
+                    child: ListView(children: [
+                      const SizedBox(height: 20),
+                      CustomTextTitleAuth(text: "35".tr),
+                      const SizedBox(height: 10),
+                      CustomTextBodyAuth(text: "35".tr),
+                      const SizedBox(height: 15),
+                      CustomTextFormAuth(
+                        isNumber: false,
+                        valid: (val) {
+                          return validInput(val!, 3, 40, "password");
+                        },
+                        myController: controller.password,
+                        hintText: "13".tr,
+                        iconData: Icons.lock_outline,
+                        labelText: "19".tr,
+                        // mycontroller: ,
+                      ),
+                      CustomTextFormAuth(
+                        isNumber: false,
 
-                      valid: (val) {
-                        return validInput(val!, 3, 40, "password");
-                      },
-            myController: controller.password,
-            hintText: "Re" + " " + "13".tr,
-            iconData: Icons.lock_outline,
-            labelText:  "19".tr,
-            
-          ),
-          CustomButtomAuth(text: "33".tr, onPressed: () {
-             controller.goToSuccessResetPassword();
-          }),
-          const SizedBox(height: 40),
-        ]),
-      ),
+                        valid: (val) {
+                          return validInput(val!, 3, 40, "password");
+                        },
+                        myController: controller.repassword,
+                        hintText: "Re" + " " + "13".tr,
+                        iconData: Icons.lock_outline,
+                        labelText: "19".tr,
+                        // mycontroller: ,
+                      ),
+                      CustomButtomAuth(
+                          text: "33".tr,
+                          onPressed: () {
+                            controller.goToSuccessResetPassword();
+                          }),
+                      const SizedBox(height: 40),
+                    ]),
+                  ),
+              )
+                )),
     );
   }
 }

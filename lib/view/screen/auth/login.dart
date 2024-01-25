@@ -1,3 +1,4 @@
+import 'package:ecommerc/core/class/handlingdataview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/class/status_request.dart';
@@ -29,16 +30,16 @@ class Login extends StatelessWidget {
                 .displayLarge!
                 .copyWith(color: AppColor.grey)),
       ),
-      body:  PopScope(
-      canPop: false,
-      onPopInvoked: (didPop) {
-        alertExitApp();
-      },
+      body: PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {
+            alertExitApp();
+          },
           child: GetBuilder<LoginControllerImp>(
             builder: (controller) =>
-                controller.statusRequest == StatusRequest.loading
-                    ? const Center(child: Text("Loading"))
-                    : Container(
+                HandlingDataRequest(
+                statusRequest: controller.statusRequest,
+                widget:  Container(
                         padding: const EdgeInsets.symmetric(
                             vertical: 15, horizontal: 30),
                         child: Form(
@@ -103,6 +104,7 @@ class Login extends StatelessWidget {
                             )
                           ]),
                         ),
+                )
                       ),
           )),
     );

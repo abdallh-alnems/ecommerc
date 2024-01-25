@@ -1,28 +1,49 @@
 import 'package:get/get.dart';
-
+import '../../../../core/class/status_request.dart';
 import '../../../../core/constant/routes/route.dart';
+import '../../../../core/functions/handingdatacontroller.dart';
+import '../../../../data/data_source/remote/forgetpassword/verifycode.dart';
 
 abstract class VerifyCodeController extends GetxController {
   checkCode();
-  goToResetPassword();
+  goToResetPassword(String verifycode);
 }
 
-class VerifyCodeControllerImp extends VerifyCodeController {  
+class VerifyCodeControllerImp extends VerifyCodeController {
+  String? email;
 
-  late String verifyCode  ; 
+  VerifyCodeForgetPasswordData verifyCodeForgetPasswordData =
+      VerifyCodeForgetPasswordData(Get.find());
+
+  StatusRequest statusRequest = StatusRequest.none;
 
   @override
   checkCode() {}
 
   @override
-  goToResetPassword() {
-    Get.offNamed(AppRoute.resetPassword);
+  goToResetPassword(verifycode) async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response =
+        await verifyCodeForgetPasswordData.postdata(email!, verifycode);
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        Get.offNamed(AppRoute.resetPassword , arguments: {
+          "email" : email
+        });
+      } else {
+        Get.defaultDialog(
+            title: "ُWarning", middleText: "Verify Code Not Correct");
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
   }
 
   @override
-  void onInit() {  
+  void onInit() {
+    email = Get.arguments['email'];
     super.onInit();
   }
-
- 
 }

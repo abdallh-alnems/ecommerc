@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   dartz: ^0.10.1
+  firebase_core: ^2.24.2
   flutter:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1

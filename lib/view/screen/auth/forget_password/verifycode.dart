@@ -48,7 +48,7 @@ class VerifyCode extends StatelessWidget {
                 },
                 //runs when every textfield is filled
                 onSubmit: (String verificationCode) {
-                     controller.goToResetPassword() ; 
+                     controller.goToResetPassword(verificationCode) ; 
                 }, // end onSubmit
               ), 
           const SizedBox(height: 40),

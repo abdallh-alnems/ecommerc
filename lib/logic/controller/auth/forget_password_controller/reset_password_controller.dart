@@ -1,35 +1,71 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import '../../../../core/class/status_request.dart';
 import '../../../../core/constant/routes/route.dart';
+import '../../../../core/functions/handingdatacontroller.dart';
+import '../../../../data/data_source/remote/forgetpassword/resetpassword.dart';
 
 abstract class ResetPasswordController extends GetxController {
-  resetPassword();
+  resetpassword();
   goToSuccessResetPassword();
 }
 
-class ResetPasswordControllerImp extends ResetPasswordController { 
-  late TextEditingController password; 
-  late TextEditingController repassword; 
+class ResetPasswordControllerImp extends ResetPasswordController {
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+
+  ResetPasswordData resetPasswordData = ResetPasswordData(Get.find());
+
+  StatusRequest statusRequest = StatusRequest.none ; 
+
+  late TextEditingController password;
+  late TextEditingController repassword;
+
+  String? email;
 
   @override
-  resetPassword() {}
+  resetpassword() {}
 
   @override
-  goToSuccessResetPassword() {
-    Get.offNamed(AppRoute.successResetpassword);
+  goToSuccessResetPassword() async {
+    if (password.text != repassword.text) {
+      return Get.defaultDialog(
+          title: "warning", middleText: "Password Not Match");
+    }
+
+    if (formstate.currentState!.validate()) {
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await resetPasswordData.postdata(email!, password.text);
+      print("=============================== Controller $response ");
+      statusRequest = handlingData(response);
+      if (StatusRequest.success == statusRequest) {
+        if (response['status'] == "success") {
+          // data.addAll(response['data']);
+          Get.offNamed(AppRoute.successResetpassword);
+        } else {
+          Get.defaultDialog(
+              title: "ُWarning", middleText: "Try Again");
+          statusRequest = StatusRequest.failure;
+        }
+      }
+      update();
+    } else {
+      print("Not Valid");
+    }
   }
 
   @override
-  void onInit() { 
-    password = TextEditingController(); 
-    repassword = TextEditingController(); 
+  void onInit() {
+    email = Get.arguments['email'];
+    password = TextEditingController();
+    repassword = TextEditingController();
     super.onInit();
   }
 
   @override
-  void dispose() { 
-    password.dispose(); 
-    repassword.dispose(); 
+  void dispose() {
+    password.dispose();
+    repassword.dispose();
     super.dispose();
   }
 }
