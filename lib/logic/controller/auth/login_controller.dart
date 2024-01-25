@@ -1,3 +1,4 @@
+import 'package:ecommerc/core/services/services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../core/class/status_request.dart';
@@ -16,6 +17,7 @@ abstract class LoginController extends GetxController {
 class LoginControllerImp extends LoginController {
    
   LoginData loginData  = LoginData(Get.find()) ; 
+  MyServices myServices =Get.find();
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
@@ -42,6 +44,16 @@ class LoginControllerImp extends LoginController {
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
           // data.addAll(response['data']);
+                  myServices.getStorage
+                .write("id", response['data']['users_id']);
+          //   String userid = myServices.getStorage.read("id")!;
+            myServices.getStorage
+                .write("username", response['data']['users_name']);
+            myServices.getStorage
+                .write("email", response['data']['users_email']);
+            myServices.getStorage
+                .write("phone", response['data']['users_phone']);
+                 myServices.getStorage.write("step", "2");
           Get.offNamed(AppRoute.homepage);
         } else {
           Get.defaultDialog(title: "ُWarning" , middleText: "Email Or Password Not Correct"); 
@@ -62,8 +74,7 @@ class LoginControllerImp extends LoginController {
   @override
   void onInit() {
      FirebaseMessaging.instance.getToken().then((value) {
-      print(value);
-      print("===============================");
+      print("token $value");
       String? token = value;
     });
     email = TextEditingController();

@@ -8,10 +8,7 @@ import 'logic/bindings/intial_bindings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-
   await initialServices();
-
   runApp(const MyApp());
 }
 
