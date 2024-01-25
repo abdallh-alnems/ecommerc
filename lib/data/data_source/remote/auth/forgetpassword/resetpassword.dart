@@ -1,5 +1,5 @@
-import '../../../../core/class/crud.dart';
-import '../../../../core/constant/link_api.dart';
+import '../../../../../core/class/crud.dart';
+import '../../../../../core/constant/link_api.dart';
 
 class ResetPasswordData {
   Crud crud;

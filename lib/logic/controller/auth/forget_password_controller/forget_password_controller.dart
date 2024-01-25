@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../core/class/status_request.dart';
 import '../../../../core/constant/routes/route.dart';
 import '../../../../core/functions/handingdatacontroller.dart';
-import '../../../../data/data_source/remote/forgetpassword/checkemail.dart';
+import '../../../../data/data_source/remote/auth/forgetpassword/checkemail.dart';
 
 abstract class ForgetPasswordController extends GetxController {
   checkemail(); 

@@ -1,10 +1,16 @@
 class AppLink { 
+
+  static const String server = "https://nimss.net/ecommerce-PHP";
+
+  static const String imageststatic = "https://nimss.net/ecommerce-PHP/upload";
+
 //========================== Image ============================
-  // static const String imagestCategories = "$imageststatic/categories";
-  // static const String imagestItems = "$imageststatic/items";
+   static const String imagestCategories = "$imageststatic/categories";
+   static const String imagestItems = "$imageststatic/items";
 // =============================================================
 //
-  static const String server = "https://nimss.net/ecommerce-PHP";
+
+
 
  // static const String notification = "$server/notification.php";
 
@@ -24,12 +30,12 @@ class AppLink {
   static const String verifycodeforgetpassword =
       "$server/forgetpassword/verifycode.php";
 
-// // Home
+ // Home
 
-//   static const String homepage = "$server/home.php";
-// // items
-//   static const String items = "$server/items/items.php";
-//   static const String searchitems = "$server/items/search.php";
+   static const String homepage = "$server/home.php";
+// items
+   static const String items = "$server/items/items.php";
+   static const String searchitems = "$server/items/search.php";
 
 // // Favorite
 

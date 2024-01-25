@@ -1,82 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../core/constant/color.dart';
+import '../../core/class/handlingdataview.dart';
 import '../../logic/controller/home_controller.dart';
+import '../widget/home/custombottomappbarhome.dart';
+import '../widget/home/customcardhome.dart';
+import '../widget/home/customtitlehome.dart';
+import '../widget/home/listcategorieshome.dart';
+import '../widget/home/listitemshome.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    HomeControllerImp controller = Get.put(HomeControllerImp());
+    Get.put(HomeControllerImp());
     return Scaffold(
-      body: Container(
-          child: ListView(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: Row(children: [
-              Expanded(
-                  child: TextFormField(
-                decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    hintText: "Find Product",
-                    hintStyle: TextStyle(fontSize: 18),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(10)),
-                    filled: true,
-                    fillColor: Colors.grey[200]),
-              )),
-              SizedBox(width: 10),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(10)),
-                width: 60,
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.notifications_active_outlined,
-                      size: 30,
-                      color: Colors.grey[600],
-                    )),
-              )
-            ]),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            child: Stack(children: [
-              Container(
-                alignment: Alignment.center,
-                child: ListTile(
-                  title: Text("A summer surprise",
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
-                  subtitle: Text("Cashback 20%",
-                      style: TextStyle(color: Colors.white, fontSize: 30)),
-                ),
-                height: 150,
-                decoration: BoxDecoration(
-                    color: AppColor.primaryColor,
-                    borderRadius: BorderRadius.circular(20)),
-              ),
-              Positioned(
-                top: -20,
-                right: -20,
-                child: Container(
-                  height: 110,
-                  width: 110,
-                  decoration: BoxDecoration(
-                      color: AppColor.secondColor,
-                      borderRadius: BorderRadius.circular(160)),
-                ),
-              )
-            ]),
-          )
-        ],
-      )),
+      body: GetBuilder<HomeControllerImp>(
+          builder: (controller) => HandlingDataView(
+              statusRequest: controller.statusRequest,
+              widget: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: ListView(
+                    children: [
+                      CustomAppBar(
+                          titleappbar: "Find Product",
+                          onPressedIcon: () {},
+                          onPressedSearch: () {}),
+                      const CustomCardHome(
+                          title: "A summer surprise", body: "Cashback 20%"),
+                      const CustomTitleHome(title: "categories"),
+                      const ListCategoriesHome(),
+                      const SizedBox(height: 10),
+                      const CustomTitleHome(title: "Product for you"),
+                      const SizedBox(height: 10),
+                      const ListItemsHome(),
+                      const CustomTitleHome(title: "Offer"),
+                      const SizedBox(height: 10),
+                      const ListItemsHome()
+                    ],
+                  )))),
     );
   }
 }
