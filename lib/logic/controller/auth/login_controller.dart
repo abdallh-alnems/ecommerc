@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import '../../../core/class/status_request.dart';
 import '../../../core/constant/routes/route.dart';
 import '../../../core/functions/handingdatacontroller.dart';
-import '../../../core/services/services.dart';
 import '../../../data/data_source/remote/auth/login.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 
 abstract class LoginController extends GetxController {
@@ -61,6 +61,11 @@ class LoginControllerImp extends LoginController {
 
   @override
   void onInit() {
+     FirebaseMessaging.instance.getToken().then((value) {
+      print(value);
+      print("===============================");
+      String? token = value;
+    });
     email = TextEditingController();
     password = TextEditingController();
     super.onInit();
