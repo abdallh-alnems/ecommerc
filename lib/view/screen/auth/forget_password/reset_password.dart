@@ -44,7 +44,7 @@ class ResetPassword extends StatelessWidget {
                       CustomTextFormAuth(
                         isNumber: false,
                         valid: (val) {
-                          return validInput(val!, 3, 40, "password");
+                          return validInput(val!, 3, 40, "Repassword");
                         },
                         myController: controller.password,
                         hintText: "13".tr,

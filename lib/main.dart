@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       translations: MyTranslation(),
       locale: controller.language,
       initialBinding: InitialBindings(),
+      //home: Login(),
       getPages: routes,
     );
   }

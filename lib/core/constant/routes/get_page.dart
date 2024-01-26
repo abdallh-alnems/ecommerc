@@ -1,3 +1,4 @@
+import 'package:ecommerc/view/screen/homescreen.dart';
 import 'package:get/get.dart';
 import '../../../view/screen/auth/forget_password/forget_password.dart';
 import '../../../view/screen/auth/forget_password/reset_password.dart';
@@ -32,7 +33,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.verfiyCodeSignUp, page: () => const VerfiyCodeSignUp()),
   //
-  GetPage(name: AppRoute.homepage, page: () => const HomePage()),
+  GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
   // GetPage(name: AppRoute.items, page: () => const Items()),
   // GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
   // GetPage(name: AppRoute.myfavroite, page: () => const MyFavorite()),
