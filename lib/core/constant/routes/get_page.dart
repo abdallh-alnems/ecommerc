@@ -1,5 +1,6 @@
 import 'package:ecommerc/view/screen/homescreen.dart';
 import 'package:get/get.dart';
+import '../../../logic/controller/productdetails_controller.dart';
 import '../../../view/screen/auth/forget_password/forget_password.dart';
 import '../../../view/screen/auth/forget_password/reset_password.dart';
 import '../../../view/screen/auth/forget_password/success_resetpassword.dart';
@@ -8,10 +9,10 @@ import '../../../view/screen/auth/login.dart';
 import '../../../view/screen/auth/siginup.dart';
 import '../../../view/screen/auth/success_signup.dart';
 import '../../../view/screen/auth/verify_code_signup.dart';
-import '../../../view/screen/home.dart';
 import '../../../view/screen/items.dart';
 import '../../../view/screen/language.dart';
 import '../../../view/screen/onboarding.dart';
+import '../../../view/screen/productdetails.dart';
 import '../../middleware/mymiddleware.dart';
 import 'route.dart';
 
@@ -20,7 +21,7 @@ List<GetPage<dynamic>>? routes = [
       name: "/", page: () => const Language(),
         middlewares: [MyMiddleWare()]
        ),
-  // GetPage(name: "/", page: () =>   TestView()),
+ // GetPage(name: "/", page: () => ProductDetails()),
   // GetPage(name: AppRoute.cart, page: () => const Cart()),
 //  Auth
   GetPage(name: AppRoute.login, page: () => const Login()),
@@ -37,8 +38,8 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.verfiyCodeSignUp, page: () => const VerfiyCodeSignUp()),
   //
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
-   GetPage(name: AppRoute.items, page: () => const Items()),
-  // GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
+  GetPage(name: AppRoute.items, page: () => const Items()),
+  GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
   // GetPage(name: AppRoute.myfavroite, page: () => const MyFavorite()),
   // //
   // GetPage(name: AppRoute.addressview, page: () => const AddressView()),
@@ -48,5 +49,5 @@ List<GetPage<dynamic>>? routes = [
   // GetPage(name: AppRoute.ordersarchive, page: () => const OrdersArchiveView()),
   // GetPage(name: AppRoute.ordersdetails, page: () => const OrdersDetails()),
   // GetPage(
-  //     name: AppRoute.addressadddetails, page: () => const AddressAddDetails()), 
+  //     name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
 ];

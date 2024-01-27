@@ -16,7 +16,7 @@ class ItemsModel {
   String? categoriesNamaAr;
   String? categoriesImage;
   String? categoriesDatetime;
-  String? favorite;
+  int? favorite;
   String? itemsPriceDiscount ;  
 
   ItemsModel(

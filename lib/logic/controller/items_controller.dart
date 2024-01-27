@@ -2,18 +2,24 @@ import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
 import '../../core/functions/handingdatacontroller.dart';
+import '../../core/services/services.dart';
 import '../../data/data_source/remote/items_data.dart';
+import '../../data/model/itemsmodel.dart';
 
 abstract class ItemsController extends GetxController {
   intialData();
   changeCat(int val, String catval);
   getItems(String categoryid);
+   goToPageProductDetails(ItemsModel itemsModel);
 }
 
 class ItemsControllerImp extends ItemsController {
   List categories = [];
   String? catid;
   int? selectedCat;
+
+  MyServices myServices = Get.find();
+
 
   ItemsData testData = ItemsData(Get.find());
 
@@ -47,7 +53,7 @@ class ItemsControllerImp extends ItemsController {
   getItems(categoryid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
-    var response = await testData.getData(categoryid);
+    var response = await testData.getData(categoryid , myServices.getStorage.read('id').toString());
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -60,5 +66,9 @@ class ItemsControllerImp extends ItemsController {
       // End
     }
     update();
+  }
+   @override
+  goToPageProductDetails(itemsModel) {
+    Get.toNamed("productdetails", arguments: {"itemsmodel": itemsModel});
   }
 }

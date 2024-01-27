@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/class/handlingdataview.dart';
 import '../../data/model/itemsmodel.dart';
+import '../../logic/controller/favorite_controller.dart';
 import '../../logic/controller/items_controller.dart';
 import '../widget/customappbar.dart';
 import '../widget/items/customlistitems.dart';
@@ -13,6 +14,7 @@ class Items extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(ItemsControllerImp());
+    FavoriteController controllerfav = Get.put(FavoriteController());
 
     return Scaffold(
       body: Container(
@@ -35,6 +37,8 @@ class Items extends StatelessWidget {
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2, childAspectRatio: 0.7),
                       itemBuilder: (BuildContext context, index) {
+                        controllerfav.isFavorite[controller.data[index]
+                            ['items_id']] = controller.data[index]['favorite'];
                         return CustomListItems(
                             itemsModel:
                                 ItemsModel.fromJson(controller.data[index]));
