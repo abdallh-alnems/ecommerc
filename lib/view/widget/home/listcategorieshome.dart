@@ -1,10 +1,10 @@
-
 import 'package:ecommerc/core/constant/link_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constant/color.dart';
+import '../../../core/functions/translatedatebase.dart';
 import '../../../data/model/categoriesmodel.dart';
 import '../../../logic/controller/home_controller.dart';
 
@@ -21,6 +21,7 @@ class ListCategoriesHome extends GetView<HomeControllerImp> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Categories(
+            i: index,
             categoriesModel:
                 CategoriesModel.fromJson(controller.categories[index]),
           );
@@ -30,31 +31,43 @@ class ListCategoriesHome extends GetView<HomeControllerImp> {
   }
 }
 
-class Categories extends StatelessWidget {
+class Categories extends GetView<HomeControllerImp> {
   final CategoriesModel categoriesModel;
-  const Categories({Key? key, required this.categoriesModel}) : super(key: key);
+  final int? i;
+
+  const Categories({
+    super.key,
+    required this.categoriesModel,
+    required this.i,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-              color: AppColor.thirdColor,
-              borderRadius: BorderRadius.circular(20)),
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          height: 70,
-          width: 70,
-          child: SvgPicture.network(
+    return InkWell(
+      onTap: () {
+        controller.goToItems(
+            controller.categories, i! ,categoriesModel.categoriesId!.toString());
+      },
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: AppColor.thirdColor,
+                borderRadius: BorderRadius.circular(20)),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            height: 70,
+            width: 70,
+            child: SvgPicture.network(
               "${AppLink.imagestCategories}/${categoriesModel.categoriesImage}",
               // color: AppColor.secondColor,
-              ),
-        ),
-        Text(
-          "${categoriesModel.categoriesName}",
-          style: const TextStyle(fontSize: 13, color: AppColor.black),
-        )
-      ],
+            ),
+          ),
+          Text(
+            "${translateDatabase(categoriesModel.categoriesNamaAr, categoriesModel.categoriesName)}",
+            style: const TextStyle(fontSize: 13, color: AppColor.black),
+          )
+        ],
+      ),
     );
   }
 }

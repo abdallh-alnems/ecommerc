@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/class/handlingdataview.dart';
 import '../../logic/controller/home_controller.dart';
-import '../widget/home/customappbar.dart';
+import '../widget/customappbar.dart';
 import '../widget/home/customcardhome.dart';
 import '../widget/home/customtitlehome.dart';
 import '../widget/home/listcategorieshome.dart';

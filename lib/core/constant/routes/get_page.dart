@@ -9,6 +9,7 @@ import '../../../view/screen/auth/siginup.dart';
 import '../../../view/screen/auth/success_signup.dart';
 import '../../../view/screen/auth/verify_code_signup.dart';
 import '../../../view/screen/home.dart';
+import '../../../view/screen/items.dart';
 import '../../../view/screen/language.dart';
 import '../../../view/screen/onboarding.dart';
 import '../../middleware/mymiddleware.dart';
@@ -16,7 +17,9 @@ import 'route.dart';
 
 List<GetPage<dynamic>>? routes = [
   GetPage(
-      name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
+      name: "/", page: () => const Language(),
+        middlewares: [MyMiddleWare()]
+       ),
   // GetPage(name: "/", page: () =>   TestView()),
   // GetPage(name: AppRoute.cart, page: () => const Cart()),
 //  Auth
@@ -34,7 +37,7 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.verfiyCodeSignUp, page: () => const VerfiyCodeSignUp()),
   //
   GetPage(name: AppRoute.homepage, page: () => const HomeScreen()),
-  // GetPage(name: AppRoute.items, page: () => const Items()),
+   GetPage(name: AppRoute.items, page: () => const Items()),
   // GetPage(name: AppRoute.productdetails, page: () => const ProductDetails()),
   // GetPage(name: AppRoute.myfavroite, page: () => const MyFavorite()),
   // //

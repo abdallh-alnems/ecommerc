@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
+import '../../core/constant/routes/route.dart';
 import '../../core/functions/handingdatacontroller.dart';
 import '../../core/services/services.dart';
 import '../../data/data_source/remote/home_data.dart';
@@ -8,6 +9,7 @@ import '../../data/data_source/remote/home_data.dart';
 abstract class HomeController extends GetxController {
   initialData();
   getdata();
+  goToItems(List categories, int selectedCat, String categoryid);
 }
 
 class HomeControllerImp extends HomeController {
@@ -15,6 +17,8 @@ class HomeControllerImp extends HomeController {
 
   String? username;
   int? id;
+    String? lang;
+
 
   HomeData homedata = HomeData(Get.find());
 
@@ -27,6 +31,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   initialData() {
+    lang  = myServices.getStorage.read("lang");
     username = myServices.getStorage.read("username");
     id = myServices.getStorage.read("id");
   }
@@ -53,5 +58,14 @@ class HomeControllerImp extends HomeController {
       }
     }
     update();
+  }
+
+  @override
+  goToItems(categories, selectedCat, categoryid) {
+    Get.toNamed(AppRoute.items, arguments: {
+      "categories": categories,
+      "selectedcat": selectedCat,
+      "catid": categoryid
+    });
   }
 }
