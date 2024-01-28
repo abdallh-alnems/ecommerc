@@ -36,36 +36,38 @@ class LoginControllerImp extends LoginController {
   @override
   login() async {
     if (formstate.currentState!.validate()) {
-      statusRequest = StatusRequest.loading; 
-      update() ; 
-      var response = await loginData.postdata(email.text , password.text);
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await loginData.postdata(email.text, password.text);
       print("=============================== Controller $response ");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
           // data.addAll(response['data']);
-                  myServices.getStorage
+          if (response['data']['users_approve'] == 1) {
+            myServices.getStorage
                 .write("id", response['data']['users_id']);
-          //   String userid = myServices.getStorage.read("id")!;
             myServices.getStorage
                 .write("username", response['data']['users_name']);
             myServices.getStorage
                 .write("email", response['data']['users_email']);
             myServices.getStorage
                 .write("phone", response['data']['users_phone']);
-                 myServices.getStorage.write("step", "2");
-          Get.offNamed(AppRoute.homepage);
+            myServices.getStorage.write("step", "2");
+            Get.offNamed(AppRoute.homepage);
+          } else {
+            Get.toNamed(AppRoute.verfiyCodeSignUp,
+                arguments: {"email": email.text});
+          }
         } else {
-          Get.defaultDialog(title: "ُWarning" , middleText: "Email Or Password Not Correct"); 
+          Get.defaultDialog(
+              title: "ُWarning", middleText: "Email Or Password Not Correct");
           statusRequest = StatusRequest.failure;
         }
       }
       update();
-    } else {
-      
-    }
+    } else {}
   }
-
   @override
   goToSignUp() {
     Get.offNamed(AppRoute.signUp);

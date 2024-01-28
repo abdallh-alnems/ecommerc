@@ -47,8 +47,8 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
     super.onInit();
    }
 
-  //  reSend(){
-  //     verfiyCodeSignUpData.resendData(email!); 
-  //  }
+   reSend(){
+      verfiyCodeSignUpData.resendData(email!); 
+   }
  
 }

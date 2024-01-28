@@ -22,13 +22,13 @@ class CustomButtonAppBar extends StatelessWidget {
         Icon(
           icondata,
           color: active == true ? AppColor.primaryColor : AppColor.grey2,
-          size: 12,
+          // size: 15,
         ),
-        Text(textbutton,
-            style: TextStyle(
-              color: active == true ? AppColor.primaryColor : AppColor.grey2,
-              fontSize: 12,
-            )),
+        // Text(textbutton,
+        //     style: TextStyle(
+        //       color: active == true ? AppColor.primaryColor : AppColor.grey2,
+        //       fontSize: 12,
+        //     )),
       ]),
     );
   }

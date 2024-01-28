@@ -12,7 +12,7 @@ class AppLink {
 
 
 
- // static const String notification = "$server/notification.php";
+ static const String notification = "$server/notification.php";
 
 // ================================= Auth ========================== //
 
@@ -20,7 +20,7 @@ class AppLink {
   static const String verifycodessignup = "$server/auth/verfiycode.php";
 
    static const String login = "$server/auth/login.php";
-  // static const String resend = "$server/auth/resend.php";
+   static const String resend = "$server/auth/resend.php";
 
 // ================================= ForgetPassword ========================== //
 
