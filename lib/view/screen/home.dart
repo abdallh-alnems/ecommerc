@@ -1,3 +1,4 @@
+import 'package:ecommerc/core/constant/routes/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/class/handlingdataview.dart';
@@ -22,12 +23,16 @@ class HomePage extends StatelessWidget {
                 child: ListView(
                   children: [
                     CustomAppBar(
-                        titleappbar: "Find Product",
-                        onPressedIcon: () {},
-                        onPressedSearch: () {}),
+                      titleappbar: "Find Product",
+                      onPressedIcon: () {},
+                      onPressedSearch: () {},
+                      onPressedIconFavorite: () {
+                        Get.toNamed(AppRoute.myfavroite);
+                      },
+                    ),
                     const CustomCardHome(
                         title: "A summer surprise", body: "Cashback 20%"),
-                //    const CustomTitleHome(title: "categories"),
+                    //    const CustomTitleHome(title: "categories"),
                     const ListCategoriesHome(),
                     const SizedBox(height: 10),
                     const CustomTitleHome(title: "Product for you"),

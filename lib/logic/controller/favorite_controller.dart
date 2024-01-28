@@ -31,7 +31,7 @@ class FavoriteController extends GetxController {
     data.clear();
     statusRequest = StatusRequest.loading;
     var response = await favoriteData.addFavorite(
-        myServices.getStorage.read("id")!, itemsid);
+        myServices.getStorage.read("id").toString(), itemsid);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
@@ -52,7 +52,7 @@ class FavoriteController extends GetxController {
     data.clear();
     statusRequest = StatusRequest.loading;
     var response = await favoriteData.removeFavorite(
-        myServices.getStorage.read("id")!, itemsid);
+        myServices.getStorage.read("id").toString(), itemsid);
     print("=============================== Controller $response ");
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {

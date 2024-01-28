@@ -1,20 +1,20 @@
 class MyFavoriteModel {
-  String? favoriteId;
-  String? favoriteUsersid;
-  String? favoriteItemsid;
-  String? itemsId;
+  int? favoriteId;
+  int? favoriteUsersid;
+  int? favoriteItemsid;
+  int? itemsId;
   String? itemsName;
   String? itemsNameAr;
   String? itemsDesc;
   String? itemsDescAr;
   String? itemsImage;
-  String? itemsCount;
-  String? itemsActive;
-  String? itemsPrice;
-  String? itemsDiscount;
+  int? itemsCount;
+  int? itemsActive;
+  int? itemsPrice;
+  int? itemsDiscount;
   String? itemsDate;
   String? itemsCat;
-  String? usersId;
+  int? usersId;
 
   MyFavoriteModel(
       {this.favoriteId,

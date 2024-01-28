@@ -74,19 +74,19 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
                               fontFamily: "sans")),
-                     GetBuilder<FavoriteController>(
+                      GetBuilder<FavoriteController>(
                           builder: (controller) => IconButton(
                               onPressed: () {
                                 if (controller.isFavorite[itemsModel.itemsId] ==
-                                    "1") {
-                                  controller.setFavorite(
-                                      itemsModel.itemsId, "0");
-                                  // controller
-                                  //     .removeFavorite(itemsModel.itemsId!);
+                                    1) {
+                                  controller.setFavorite(itemsModel.itemsId, 0);
+                                  
+                                 controller
+                                     .removeFavorite(itemsModel.itemsId!.toString());
                                 } else {
-                                  controller.setFavorite(
-                                      itemsModel.itemsId, "1");
-                                  // controller.addFavorite(itemsModel.itemsId!);
+                                  controller.setFavorite(itemsModel.itemsId, 1);
+                                  controller.addFavorite(itemsModel.itemsId!.toString());
+                                
                                 }
                               },
                               icon: Icon(
@@ -97,9 +97,6 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                               )))
                     ],
                   )
-                    
-                  
-          
                 ]),
           ),
         ));

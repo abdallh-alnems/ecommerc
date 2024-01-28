@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/class/handlingdataview.dart';
+import '../../core/constant/routes/route.dart';
 import '../../data/model/itemsmodel.dart';
 import '../../logic/controller/favorite_controller.dart';
 import '../../logic/controller/items_controller.dart';
@@ -23,7 +24,10 @@ class Items extends StatelessWidget {
           CustomAppBar(
               titleappbar: "Find Product",
               onPressedIcon: () {},
-              onPressedSearch: () {}),
+              onPressedSearch: () {},
+              onPressedIconFavorite: (){
+                Get.toNamed(AppRoute.myfavroite);
+              },),
           const SizedBox(height: 20),
           const ListCategoriesItems(),
           GetBuilder<ItemsControllerImp>(
