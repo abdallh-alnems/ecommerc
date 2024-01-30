@@ -44,6 +44,7 @@ class MyFavoriteController extends GetxController {
     // data.clear();
     // statusRequest = StatusRequest.loading;
     var response = favoriteData.deleteData(favroiteid);
+   
     data.removeWhere((element) => element.favoriteId == favroiteid);
     update();
     // مكشلة ان عند ازالة المنتج لا يتم الازالة من واجهة المستخدم الا بعد التحديث

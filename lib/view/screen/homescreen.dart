@@ -1,3 +1,4 @@
+import 'package:ecommerc/core/constant/routes/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/constant/color.dart';
@@ -13,8 +14,10 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeScreenControllerImp>(
         builder: (controller) => Scaffold(
               floatingActionButton: FloatingActionButton(
-                backgroundColor: AppColor.primaryColor,
-                  onPressed: () {},
+                  backgroundColor: AppColor.primaryColor,
+                  onPressed: () {
+                    Get.toNamed(AppRoute.cart);
+                  },
                   child: const Icon(Icons.shopping_basket_outlined)),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,

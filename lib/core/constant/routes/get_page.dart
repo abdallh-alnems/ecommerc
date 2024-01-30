@@ -8,6 +8,7 @@ import '../../../view/screen/auth/login.dart';
 import '../../../view/screen/auth/siginup.dart';
 import '../../../view/screen/auth/success_signup.dart';
 import '../../../view/screen/auth/verify_code_signup.dart';
+import '../../../view/screen/cart.dart';
 import '../../../view/screen/items.dart';
 import '../../../view/screen/language.dart';
 import '../../../view/screen/myfavorite.dart';
@@ -21,8 +22,8 @@ List<GetPage<dynamic>>? routes = [
       name: "/", page: () => const Language(),
         middlewares: [MyMiddleWare()]
        ),
- // GetPage(name: "/", page: () => ProductDetails()),
-  // GetPage(name: AppRoute.cart, page: () => const Cart()),
+  // GetPage(name: "/", page: () => Cart()),
+   GetPage(name: AppRoute.cart, page: () => const Cart()),
 //  Auth
   GetPage(name: AppRoute.login, page: () => const Login()),
   GetPage(name: AppRoute.signUp, page: () => const SignUp()),

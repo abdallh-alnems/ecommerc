@@ -5,54 +5,22 @@ import '../../core/class/status_request.dart';
 import '../../core/functions/handingdatacontroller.dart';
 import '../../core/services/services.dart';
 import '../../data/data_source/remote/cart_data.dart';
-import '../../data/model/itemsmodel.dart';
+import '../../data/model/cartmodel.dart';
 
-abstract class ProductDetailsController extends GetxController {}
-
-class ProductDetailsControllerImp extends ProductDetailsController {
-  // CartController cartController = Get.put(CartController());
-
-  late ItemsModel itemsModel;
-
+class CartController extends GetxController {
   CartData cartData = CartData(Get.find());
 
   late StatusRequest statusRequest;
 
   MyServices myServices = Get.find();
 
-  int countitems = 0;
+  List<CartModel> data = [];
 
-  intialData() async {
-    statusRequest = StatusRequest.loading;
-    itemsModel = Get.arguments['itemsmodel'];
-    countitems = await getCountItems(itemsModel.itemsId!.toString());
-    statusRequest = StatusRequest.success;
-    update();
-  }
+  double priceorders = 0.0;
 
-  getCountItems(String itemsid) async {
-    statusRequest = StatusRequest.loading;
-    var response = await cartData.getCountCart(
-        myServices.getStorage.read("id")!.toString(), itemsid);
-    print("=============================== Controller $response ");
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      // Start backend
-      if (response['status'] == "success") {
-        int countitems = 0;
-        countitems = int.parse(response['data'].toString());
-        print("==================================");
-        print("$countitems");
-        return countitems;
-        // data.addAll(response['data']);
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-      // End
-    }
-  }
+  int totalcountitems = 0;
 
-  addItems(String itemsid) async {
+  add(String itemsid) async {
     statusRequest = StatusRequest.loading;
     update();
     var response = await cartData.addCart(
@@ -74,7 +42,7 @@ class ProductDetailsControllerImp extends ProductDetailsController {
     update();
   }
 
-  deleteitems(String itemsid) async {
+  delete(String itemsid) async {
     statusRequest = StatusRequest.loading;
     update();
 
@@ -97,29 +65,49 @@ class ProductDetailsControllerImp extends ProductDetailsController {
     update();
   }
 
-  List subitems = [
-    {"name": "red", "id": 1, "active": '0'},
-    {"name": "yallow", "id": 2, "active": '0'},
-    {"name": "black", "id": 3, "active": '1'}
-  ];
+ 
 
-  add() {
-    addItems(itemsModel.itemsId!.toString());
-    countitems++;
-    update();
+  resetVarCart() {
+    totalcountitems = 0;
+    priceorders = 0.0;
+    data.clear();
   }
 
-  remove() {
-    if (countitems > 0) {
-      deleteitems(itemsModel.itemsId!.toString());
-      countitems--;
-      update();
+  refreshPage() {
+    resetVarCart();
+    view();
+  }
+
+  view() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response =
+        await cartData.viewCart(myServices.getStorage.read("id")!.toString());
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        if (response['datacart']['status'] == 'success') {
+          List dataresponse = response['datacart']['data'];
+          Map dataresponsecountprice = response['countprice'];
+          data.clear();
+          data.addAll(dataresponse.map((e) => CartModel.fromJson(e)));
+          totalcountitems = int.parse(dataresponsecountprice['totalcount'].toString());
+          priceorders = double.parse(dataresponsecountprice['totalprice'].toString());
+          print(priceorders);
+        }
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+      // End
     }
+    update();
   }
 
   @override
   void onInit() {
-    intialData();
+    view();
     super.onInit();
   }
 }
