@@ -17,7 +17,7 @@ class ItemsModel {
   String? categoriesImage;
   String? categoriesDatetime;
   int? favorite;
-  String? itemsPriceDiscount ;  
+  int? itemsPriceDiscount ;  
 
   ItemsModel(
       {this.itemsId,

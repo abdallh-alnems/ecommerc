@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
@@ -5,6 +6,7 @@ import '../../core/functions/handingdatacontroller.dart';
 import '../../core/services/services.dart';
 import '../../data/data_source/remote/items_data.dart';
 import '../../data/model/itemsmodel.dart';
+import 'home_controller.dart';
 
 abstract class ItemsController extends GetxController {
   intialData();
@@ -13,7 +15,7 @@ abstract class ItemsController extends GetxController {
    goToPageProductDetails(ItemsModel itemsModel);
 }
 
-class ItemsControllerImp extends ItemsController {
+class ItemsControllerImp extends SearchMixController {
   List categories = [];
   String? catid;
   int? selectedCat;
@@ -29,6 +31,7 @@ class ItemsControllerImp extends ItemsController {
 
   @override
   void onInit() {
+      search = TextEditingController();
     intialData();
     super.onInit();
   }

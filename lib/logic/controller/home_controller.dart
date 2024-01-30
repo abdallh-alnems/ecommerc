@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/status_request.dart';
@@ -5,8 +6,9 @@ import '../../core/constant/routes/route.dart';
 import '../../core/functions/handingdatacontroller.dart';
 import '../../core/services/services.dart';
 import '../../data/data_source/remote/home_data.dart';
+import '../../data/model/itemsmodel.dart';
 
-abstract class HomeController extends GetxController {
+abstract class HomeController extends SearchMixController {
   initialData();
   getdata();
   goToItems(List categories, int selectedCat, String categoryid);
@@ -17,8 +19,7 @@ class HomeControllerImp extends HomeController {
 
   String? username;
   int? id;
-    String? lang;
-
+  String? lang;
 
   HomeData homedata = HomeData(Get.find());
 
@@ -31,13 +32,15 @@ class HomeControllerImp extends HomeController {
 
   @override
   initialData() {
-    lang  = myServices.getStorage.read("lang");
+    lang = myServices.getStorage.read("lang");
     username = myServices.getStorage.read("username");
     id = myServices.getStorage.read("id");
   }
 
   @override
   void onInit() {
+    search = TextEditingController();
+
     getdata();
     initialData();
     super.onInit();
@@ -67,5 +70,49 @@ class HomeControllerImp extends HomeController {
       "selectedcat": selectedCat,
       "catid": categoryid
     });
+  }
+
+  goToPageProductDetails(itemsModel) {
+    Get.toNamed("productdetails", arguments: {"itemsmodel": itemsModel});
+  }
+}
+
+class SearchMixController extends GetxController {
+  List<ItemsModel> listdata = [];
+
+  late StatusRequest statusRequest;
+  HomeData homedata = HomeData(Get.find());
+
+  searchData() async {
+    statusRequest = StatusRequest.loading;
+    var response = await homedata.searchData(search!.text.toString());
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        listdata.clear();
+        List responsedata = response['data'];
+        listdata.addAll(responsedata.map((e) => ItemsModel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  bool isSearch = false;
+  TextEditingController? search;
+  checkSearch(val) {
+    if (val == "") {
+      statusRequest = StatusRequest.none;
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearchItems() {
+    isSearch = true;
+    searchData();
+    update();
   }
 }

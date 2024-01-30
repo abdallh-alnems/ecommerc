@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../core/class/handlingdataview.dart';
-import '../../core/constant/routes/route.dart';
 import '../../logic/controller/myfavoritecontroller.dart';
-import '../widget/customappbar.dart';
 import '../widget/myfavorite/customlistfavoriteitems.dart';
 
 class MyFavorite extends StatelessWidget {
@@ -18,14 +15,14 @@ class MyFavorite extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: GetBuilder<MyFavoriteController>(
             builder: ((controller) => ListView(children: [
-                  CustomAppBar(
-                    titleappbar: "Find Product",
+                  // CustomAppBar(
+                  //   titleappbar: "Find Product",
                   
-                    onPressedSearch: () {},
-                    onPressedIconFavorite: () {
-                      Get.toNamed(AppRoute.myfavroite);
-                    },
-                  ),
+                  //   onPressedSearch: () {},
+                  //   onPressedIconFavorite: () {
+                  //     Get.toNamed(AppRoute.myfavroite);
+                  //   },
+                  // ),
                   SizedBox(height: 20) ,
                   HandlingDataView(
                       statusRequest: controller.statusRequest,
