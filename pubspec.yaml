@@ -37,8 +37,10 @@ dependencies:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
   flutter_svg: ^2.0.9
+  geolocator: ^10.1.0
   get: ^4.6.6
   get_storage: ^2.1.1
+  google_maps_flutter: ^2.5.3
   http: ^1.2.0
   lottie: ^3.0.0
 

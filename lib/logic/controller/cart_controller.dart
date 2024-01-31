@@ -1,16 +1,28 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../core/class/status_request.dart';
+import '../../core/constant/routes/route.dart';
 import '../../core/functions/handingdatacontroller.dart';
 import '../../core/services/services.dart';
 import '../../data/data_source/remote/cart_data.dart';
 import '../../data/model/cartmodel.dart';
+import '../../data/model/couponmodel.dart';
 
 class CartController extends GetxController {
+  TextEditingController? controllercoupon;
+
   CartData cartData = CartData(Get.find());
 
+  int? discountcoupon = 0;
+
+  String? couponname;
+
+  String? couponid;
+
   late StatusRequest statusRequest;
+
+  CouponModel? couponModel;
 
   MyServices myServices = Get.find();
 
@@ -42,6 +54,19 @@ class CartController extends GetxController {
     update();
   }
 
+  goToPageCheckout() {
+    if (data.isEmpty) return Get.snackbar("تنبيه", "السله فارغه");
+    Get.toNamed(AppRoute.checkout, arguments: {
+      "couponid": couponid ?? "0",
+      "priceorder": priceorders.toString() , 
+      "discountcoupon" : discountcoupon.toString()
+    });
+  }
+
+  getTotalPrice() {
+    return (priceorders - priceorders * discountcoupon! / 100);
+  }
+
   delete(String itemsid) async {
     statusRequest = StatusRequest.loading;
     update();
@@ -65,7 +90,32 @@ class CartController extends GetxController {
     update();
   }
 
- 
+  checkcoupon() async {
+    statusRequest = StatusRequest.loading;
+    update();
+
+    var response = await cartData.checkCoupon(controllercoupon!.text);
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        Map<String, dynamic> datacoupon = response['data'];
+        couponModel = CouponModel.fromJson(datacoupon);
+        discountcoupon = int.parse(couponModel!.couponDiscount!);
+        couponname = couponModel!.couponName;
+        couponid = couponModel!.couponId;
+      } else {
+        // statusRequest = StatusRequest.failure;
+        discountcoupon = 0;
+        couponname = null;
+        couponid = null;
+        Get.snackbar("Warning", "Coupon Not Valid") ;
+      }
+      // End
+    }
+    update();
+  }
 
   resetVarCart() {
     totalcountitems = 0;
@@ -107,6 +157,7 @@ class CartController extends GetxController {
 
   @override
   void onInit() {
+    controllercoupon = TextEditingController();
     view();
     super.onInit();
   }

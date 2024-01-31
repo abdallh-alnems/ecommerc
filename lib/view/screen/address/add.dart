@@ -1,9 +1,10 @@
-import 'package:ecommercecourse/controller/address/add_controller.dart';
-import 'package:ecommercecourse/core/class/handlingdataview.dart';
-import 'package:ecommercecourse/core/constant/color.dart'; 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../../../core/class/handlingdataview.dart';
+import '../../../core/constant/color.dart';
+import '../../../logic/controller/address/add_controller.dart';
 
 class AddressAdd extends StatelessWidget {
   const AddressAdd({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class AddressAdd extends StatelessWidget {
                       ],
                     ))
                 ])))),
-      ),
+      ), 
     );
   }
 }

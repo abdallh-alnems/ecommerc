@@ -1,11 +1,9 @@
-import 'package:ecommercecourse/controller/address/add_controller.dart';
-import 'package:ecommercecourse/controller/address/adddetails_controller.dart';
-import 'package:ecommercecourse/core/class/handlingdataview.dart';
-import 'package:ecommercecourse/core/shared/custombutton.dart';
-import 'package:ecommercecourse/view/widget/auth/custombuttonauth.dart';
-import 'package:ecommercecourse/view/widget/auth/customtextformauth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/class/handlingdataview.dart';
+import '../../../logic/controller/address/adddetails_controller.dart';
+import '../../widget/auth/custom_text_form_auth.dart';
+import '../../widget/custombutton.dart';
 
 class AddressAddDetails extends StatelessWidget {
   const AddressAddDetails({Key? key}) : super(key: key);
@@ -25,24 +23,24 @@ class AddressAddDetails extends StatelessWidget {
                 statusRequest: controller.statusRequest,
                 widget: ListView(children: [
                   CustomTextFormAuth(
-                      hinttext: "city",
-                      labeltext: "city",
+                      hintText: "city",
+                      labelText: "city",
                       iconData: Icons.location_city,
-                      mycontroller: controller.city,
+                      myController: controller.city,
                       valid: (val) {},
                       isNumber: false),
                   CustomTextFormAuth(
-                      hinttext: "street",
-                      labeltext: "street",
+                      hintText: "street",
+                      labelText: "street",
                       iconData: Icons.streetview,
-                      mycontroller: controller.street,
+                      myController: controller.street,
                       valid: (val) {},
                       isNumber: false),
                   CustomTextFormAuth(
-                      hinttext: "name",
-                      labeltext: "name",
+                      hintText: "name",
+                      labelText: "name",
                       iconData: Icons.near_me,
-                      mycontroller: controller.name,
+                      myController: controller.name,
                       valid: (val) {},
                       isNumber: false),
                   CustomButton(

@@ -1,11 +1,11 @@
 class AddressModel {
-  String? addressId;
-  String? addressUsersid;
+  int? addressId;
+  int? addressUsersid;
   String? addressName;
   String? addressCity;
   String? addressStreet;
-  String? addressLat;
-  String? addressLong;
+  num? addressLat;
+  num? addressLong;
 
   AddressModel(
       {this.addressId,

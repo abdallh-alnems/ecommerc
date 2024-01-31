@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../core/constant/routes/route.dart';
-import '../../data/model/addressmodel.dart';
+import '../../../core/class/handlingdataview.dart';
+import '../../../core/constant/routes/route.dart';
+import '../../../data/model/addressmodel.dart';
+import '../../../logic/controller/address/view_controller.dart';
 
 class AddressView extends StatelessWidget {
   const AddressView({Key? key}) : super(key: key);
@@ -29,7 +31,8 @@ class AddressView extends StatelessWidget {
                   return CardAddress(
                     addressModel: controller.data[i],
                     onDelete: () {
-                      controller.deleteAddress(controller.data[i].addressId!);
+                      controller.deleteAddress(
+                          controller.data[i].addressId!.toString());
                     },
                   );
                 },
@@ -56,7 +59,11 @@ class CardAddress extends StatelessWidget {
             subtitle: Text(
                 "${addressModel.addressCity!} ${addressModel.addressStreet}"),
             trailing: IconButton(
-                onPressed: onDelete, icon: Icon(Icons.delete_outline)),
+                onPressed: onDelete,
+                icon: Icon(
+                  Icons.delete_outline,
+                  color: Colors.red,
+                )),
           )),
     );
   }
