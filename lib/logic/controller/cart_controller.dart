@@ -102,9 +102,9 @@ class CartController extends GetxController {
       if (response['status'] == "success") {
         Map<String, dynamic> datacoupon = response['data'];
         couponModel = CouponModel.fromJson(datacoupon);
-        discountcoupon = int.parse(couponModel!.couponDiscount!);
+        discountcoupon = int.parse(couponModel!.couponDiscount!.toString());
         couponname = couponModel!.couponName;
-        couponid = couponModel!.couponId;
+        couponid = couponModel!.couponId.toString();
       } else {
         // statusRequest = StatusRequest.failure;
         discountcoupon = 0;

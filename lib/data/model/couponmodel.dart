@@ -1,8 +1,8 @@
 class CouponModel {
-  String? couponId;
+  int? couponId;
   String? couponName;
-  String? couponCount;
-  String? couponDiscount;
+  int? couponCount;
+  int? couponDiscount;
   String? couponExpiredate;
 
   CouponModel(
