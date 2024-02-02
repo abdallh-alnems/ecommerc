@@ -83,7 +83,7 @@ class CheckoutController extends GetxController {
       "pricedelivery": "10",
       "ordersprice": priceorders,
       "couponid": couponid,
-      "coupondiscount" : coupondiscount.toString() , 
+       "coupondiscount" : coupondiscount.toString() , 
       "paymentmethod": paymentMethod.toString()
     };
 

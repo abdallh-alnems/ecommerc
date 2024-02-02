@@ -59,7 +59,7 @@ class CartController extends GetxController {
     Get.toNamed(AppRoute.checkout, arguments: {
       "couponid": couponid ?? "0",
       "priceorder": priceorders.toString() , 
-      "discountcoupon" : discountcoupon.toString()
+       "discountcoupon" : discountcoupon.toString()
     });
   }
 
