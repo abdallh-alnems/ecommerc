@@ -24,7 +24,7 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold)),
                   const Spacer(),
-                  // Text(listdata.ordersDatetime!)
+                  // Text(listdata.ordersDatetime!),
                   Text(
                     Jiffy(listdata.ordersDatetime!, "yyyy-MM-dd").fromNow(),
                     style: const TextStyle(
@@ -60,14 +60,15 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                     child: const Text("Details"),
                   ),
                   SizedBox(width: 10),
-                 if (listdata.ordersStatus! == "0") MaterialButton(
-                    onPressed: () {
-                      controller.deleteOrder(listdata.ordersId!);
-                    },
-                    color: AppColor.thirdColor,
-                    textColor: AppColor.secondColor,
-                    child: const Text("Delete"),
-                  )
+                  if (listdata.ordersStatus! == "0")
+                    MaterialButton(
+                      onPressed: () {
+                        controller.deleteOrder(listdata.ordersId!);
+                      },
+                      color: AppColor.thirdColor,
+                      textColor: AppColor.secondColor,
+                      child: const Text("Delete"),
+                    )
                 ],
               ),
             ],

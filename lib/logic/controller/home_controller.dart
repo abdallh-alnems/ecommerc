@@ -1,6 +1,6 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../core/class/status_request.dart';
 import '../../core/constant/routes/route.dart';
 import '../../core/functions/handingdatacontroller.dart';
@@ -12,10 +12,13 @@ abstract class HomeController extends SearchMixController {
   initialData();
   getdata();
   goToItems(List categories, int selectedCat, String categoryid);
+  
 }
 
-class HomeControllerImp extends HomeController {
+class HomeControllerImp extends HomeController  {
   MyServices myServices = Get.find();
+  
+
 
   String? username;
   int? id;
@@ -39,8 +42,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   void onInit() {
-    search = TextEditingController();
-
+    search = TextEditingController();  
     getdata();
     initialData();
     super.onInit();

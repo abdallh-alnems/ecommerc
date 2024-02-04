@@ -1,4 +1,5 @@
 import 'package:ecommerc/core/services/services.dart';
+import 'package:ecommerc/test.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../../../core/class/status_request.dart';
@@ -7,7 +8,6 @@ import '../../../core/functions/handingdatacontroller.dart';
 import '../../../data/data_source/remote/auth/login.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-
 abstract class LoginController extends GetxController {
   login();
   goToSignUp();
@@ -15,9 +15,8 @@ abstract class LoginController extends GetxController {
 }
 
 class LoginControllerImp extends LoginController {
-   
-  LoginData loginData  = LoginData(Get.find()) ; 
-  MyServices myServices =Get.find();
+  LoginData loginData = LoginData(Get.find());
+  MyServices myServices = Get.find();
 
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
@@ -26,7 +25,7 @@ class LoginControllerImp extends LoginController {
 
   bool isshowpassword = true;
 
-  StatusRequest statusRequest = StatusRequest.none ; 
+  StatusRequest statusRequest = StatusRequest.none;
 
   showPassword() {
     isshowpassword = isshowpassword == true ? false : true;
@@ -45,8 +44,9 @@ class LoginControllerImp extends LoginController {
         if (response['status'] == "success") {
           // data.addAll(response['data']);
           if (response['data']['users_approve'] == 1) {
-            myServices.getStorage
-                .write("id", response['data']['users_id']);
+            myServices.getStorage.write("id", response['data']['users_id']);
+            String userid = myServices.getStorage.read("id")!.toString();
+
             myServices.getStorage
                 .write("username", response['data']['users_name']);
             myServices.getStorage
@@ -54,6 +54,9 @@ class LoginControllerImp extends LoginController {
             myServices.getStorage
                 .write("phone", response['data']['users_phone']);
             myServices.getStorage.write("step", "2");
+            FirebaseMessaging.instance.subscribeToTopic('users');
+            FirebaseMessaging.instance.subscribeToTopic("users${userid}");
+
             Get.offNamed(AppRoute.homepage);
           } else {
             Get.toNamed(AppRoute.verfiyCodeSignUp,
@@ -68,6 +71,7 @@ class LoginControllerImp extends LoginController {
       update();
     } else {}
   }
+
   @override
   goToSignUp() {
     Get.offNamed(AppRoute.signUp);
@@ -75,7 +79,7 @@ class LoginControllerImp extends LoginController {
 
   @override
   void onInit() {
-     FirebaseMessaging.instance.getToken().then((value) {
+    FirebaseMessaging.instance.getToken().then((value) {
       print("token $value");
       String? token = value;
     });

@@ -36,6 +36,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_otp_text_field: ^1.1.1
+  flutter_ringtone_player: ^3.2.0
   flutter_svg: ^2.0.9
   geolocator: ^10.1.0
   get: ^4.6.6

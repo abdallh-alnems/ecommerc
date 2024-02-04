@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import '../constant/app_theme.dart';
+import '../functions/fcmconfig.dart';
 import '../services/services.dart';
 
 class LocaleController extends GetxController {
@@ -42,8 +43,8 @@ class LocaleController extends GetxController {
 
   @override
   void onInit() {
-    // requestPermissionNotification() ;
-    // fcmconfig();
+     requestPermissionNotification() ;
+     fcmconfig();
      requestPerLocation();
     String? getStorageLang = myServices.getStorage.read('lang');
     if (getStorageLang == "ar") {
