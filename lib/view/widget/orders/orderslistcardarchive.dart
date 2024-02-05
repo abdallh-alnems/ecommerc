@@ -1,3 +1,4 @@
+import 'package:ecommerc/view/widget/orders/dialograting.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
@@ -61,7 +62,21 @@ class CardOrdersListArchive extends GetView<OrdersArchiveController> {
                     color: AppColor.thirdColor,
                     textColor: AppColor.secondColor,
                     child: const Text("Details"),
+                    minWidth: 8,
                   ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  if (listdata.ordersRating == 0)
+                    MaterialButton(
+                      onPressed: () {
+                        showDialogRating(context, listdata.ordersId.toString());
+                      },
+                      color: AppColor.thirdColor,
+                      textColor: AppColor.secondColor,
+                      child: const Text("Rating"),
+                      minWidth: 8,
+                    ),
                 ],
               ),
             ],

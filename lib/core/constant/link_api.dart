@@ -1,41 +1,38 @@
-class AppLink { 
-
+class AppLink {
   static const String server = "https://nimss.net/ecommerce-PHP";
 
   static const String imageststatic = "https://nimss.net/ecommerce-PHP/upload";
 
 //========================== Image ============================
-   static const String imagestCategories = "$imageststatic/categories";
-   static const String imagestItems = "$imageststatic/items";
+  static const String imagestCategories = "$imageststatic/categories";
+  static const String imagestItems = "$imageststatic/items";
 // =============================================================
 //
 
-
-
- static const String notification = "$server/notification.php";
+  static const String notification = "$server/notification.php";
 
 // ================================= Auth ========================== //
 
   static const String signUp = "$server/auth/signup.php";
   static const String verifycodessignup = "$server/auth/verfiycode.php";
 
-   static const String login = "$server/auth/login.php";
-   static const String resend = "$server/auth/resend.php";
+  static const String login = "$server/auth/login.php";
+  static const String resend = "$server/auth/resend.php";
 
 // ================================= ForgetPassword ========================== //
 
-   static const String checkEmail = "$server/forgetpassword/checkemail.php";
-   static const String resetPassword =
-       "$server/forgetpassword/resetpassword.php";
+  static const String checkEmail = "$server/forgetpassword/checkemail.php";
+  static const String resetPassword =
+      "$server/forgetpassword/resetpassword.php";
   static const String verifycodeforgetpassword =
       "$server/forgetpassword/verifycode.php";
 
- // Home
+  // Home
 
-   static const String homepage = "$server/home.php";
+  static const String homepage = "$server/home.php";
 // items
-   static const String items = "$server/items/items.php";
-   static const String searchitems = "$server/items/search.php";
+  static const String items = "$server/items/items.php";
+  static const String searchitems = "$server/items/search.php";
 
 // // Favorite
 
@@ -58,19 +55,18 @@ class AppLink {
   static const String addressEdit = "$server/address/edit.php";
   static const String addressDelete = "$server/address/delete.php";
 
-  // Coupon 
+  // Coupon
 
-  static const String checkcoupon  = "$server/coupon/checkcoupon.php";
-  
-  // Checkout 
+  static const String checkcoupon = "$server/coupon/checkcoupon.php";
 
-  static const String checkout  = "$server/orders/checkout.php";
-  
-  static const String pendingorders  = "$server/orders/pending.php";
-  static const String ordersarchive  = "$server/orders/archive.php";
-  static const String ordersdetails  = "$server/orders/details.php";
-  static const String ordersdelete  = "$server/orders/delete.php";
-    static const String offers  = "$server/offers.php";
+  // Checkout
 
+  static const String checkout = "$server/orders/checkout.php";
 
- }
+  static const String pendingorders = "$server/orders/pending.php";
+  static const String ordersarchive = "$server/orders/archive.php";
+  static const String ordersdetails = "$server/orders/details.php";
+  static const String ordersdelete = "$server/orders/delete.php";
+  static const String offers = "$server/offers.php";
+  static const String rating = "$server/rating.php";
+}

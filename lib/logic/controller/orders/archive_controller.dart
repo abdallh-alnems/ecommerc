@@ -1,4 +1,4 @@
-
+import 'package:ecommerc/core/constant/routes/route.dart';
 import 'package:get/get.dart';
 
 import '../../../core/class/status_request.dart';
@@ -39,7 +39,7 @@ class OrdersArchiveController extends GetxController {
       return "The Order is being Prepared ";
     } else if (val == "2") {
       return "Ready To Picked up by Delivery man";
-    }  else if (val == "3") {
+    } else if (val == "3") {
       return "On The Way";
     } else {
       return "Archive";
@@ -67,7 +67,25 @@ class OrdersArchiveController extends GetxController {
     update();
   }
 
- 
+  submitRating(String ordersid, double rating, String comment) async {
+    data.clear();
+    statusRequest = StatusRequest.loading;
+    update();
+    var response =
+        await ordersArchiveData.rating(ordersid, rating.toString(), comment);
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      // Start backend
+      if (response['status'] == "success") {
+        Get.offAllNamed(AppRoute.ordersarchive);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+      // End
+    }
+    update();
+  }
 
   refrehOrder() {
     getOrders();
