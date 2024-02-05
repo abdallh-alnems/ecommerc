@@ -35,20 +35,21 @@ class CardOrdersList extends GetView<OrdersPendingController> {
               ),
               Divider(),
               Text(
-                  "Order Type : ${controller.printOrderType(listdata.ordersType!)}"),
+                  "Order Type : ${controller.printOrderType(listdata.ordersType!.toString())}"),
               Text("Order Price : ${listdata.ordersPrice} \$"),
               Text("Delivery Price : ${listdata.ordersPricedelivery} \$ "),
               Text(
-                  "Payment Method : ${controller.printPaymentMethod(listdata.ordersPaymentmethod!)} "),
+                  "Payment Method : ${controller.printPaymentMethod(listdata.ordersPaymentmethod!.toString())} "),
               Text(
-                  "Order Status : ${controller.printOrderStatus(listdata.ordersStatus!)} "),
+                  "Order Status : ${controller.printOrderStatus(listdata.ordersStatus!.toString())} "),
               const Divider(),
               Row(
                 children: [
-                  Text("Total Price : ${listdata.ordersId} \$ ",
+                  Text("Total Price : ${listdata.ordersTotalprice} \$ ",
                       style: const TextStyle(
                           color: AppColor.primaryColor,
-                          fontWeight: FontWeight.bold)),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 13)),
                   const Spacer(),
                   MaterialButton(
                     onPressed: () {
@@ -58,16 +59,18 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                     color: AppColor.thirdColor,
                     textColor: AppColor.secondColor,
                     child: const Text("Details"),
+                    minWidth: 8,
                   ),
-                  SizedBox(width: 10),
-                  if (listdata.ordersStatus! == "0")
+                  SizedBox(width: 8),
+                  if (listdata.ordersStatus! == 0)
                     MaterialButton(
                       onPressed: () {
-                        controller.deleteOrder(listdata.ordersId!);
+                        controller.deleteOrder(listdata.ordersId!.toString());
                       },
                       color: AppColor.thirdColor,
                       textColor: AppColor.secondColor,
                       child: const Text("Delete"),
+                      minWidth: 8,
                     )
                 ],
               ),

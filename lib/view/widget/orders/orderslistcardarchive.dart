@@ -38,13 +38,13 @@ class CardOrdersListArchive extends GetView<OrdersArchiveController> {
               ),
               const Divider(),
               Text(
-                  "Order Type : ${controller.printOrderType(listdata.ordersType!)}"),
+                  "Order Type : ${controller.printOrderType(listdata.ordersType!.toString())}"),
               Text("Order Price : ${listdata.ordersPrice} \$"),
               Text("Delivery Price : ${listdata.ordersPricedelivery} \$ "),
               Text(
-                  "Payment Method : ${controller.printPaymentMethod(listdata.ordersPaymentmethod!)} "),
+                  "Payment Method : ${controller.printPaymentMethod(listdata.ordersPaymentmethod!.toString())} "),
               Text(
-                  "Order Status : ${controller.printOrderStatus(listdata.ordersStatus!)} "),
+                  "Order Status : ${controller.printOrderStatus(listdata.ordersStatus!.toString())} "),
               const Divider(),
               Row(
                 children: [

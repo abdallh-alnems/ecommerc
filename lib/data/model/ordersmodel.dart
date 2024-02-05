@@ -1,22 +1,22 @@
 class OrdersModel {
-  String? ordersId;
-  String? ordersUsersid;
-  String? ordersAddress;
-  String? ordersType;
-  String? ordersPricedelivery;
-  String? ordersPrice;
-  String? ordersTotalprice;
-  String? ordersCoupon;
-  String? ordersPaymentmethod;
-  String? ordersStatus;
+  int? ordersId;
+  int? ordersUsersid;
+  int? ordersAddress;
+  int? ordersType;
+  int? ordersPricedelivery;
+  int? ordersPrice;
+  int? ordersTotalprice;
+  int? ordersCoupon;
+  int? ordersPaymentmethod;
+  int? ordersStatus;
   String? ordersDatetime;
-  String? addressId;
-  String? addressUsersid;
+  int? addressId;
+  int? addressUsersid;
   String? addressName;
   String? addressCity;
   String? addressStreet;
-  String? addressLat;
-  String? addressLong;
+  double? addressLat;
+  double? addressLong;
 
   OrdersModel(
       {this.ordersId,

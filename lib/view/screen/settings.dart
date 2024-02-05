@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/constant/color.dart';
 import '../../core/constant/image_asset.dart';
@@ -54,7 +54,7 @@ class Settings extends StatelessWidget {
                 ),
                 ListTile(
                   onTap: () {
-                    Get.toNamed(AppRoute.ordersarchive );
+                    Get.toNamed(AppRoute.ordersarchive);
                   },
                   trailing: Icon(Icons.card_travel),
                   title: Text("Archive"),
@@ -72,7 +72,9 @@ class Settings extends StatelessWidget {
                   title: Text("About us"),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () async {
+                  await  launchUrl(Uri.parse("tel:+201023809407"));
+                  },
                   trailing: Icon(Icons.phone_callback_outlined),
                   title: Text("Contact us"),
                 ),
