@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                                   body: "Cashback 20%"),
                               CustomTitleHome(title: "Categories"),
                               ListCategoriesHome(),
-                              CustomTitleHome(title: "Product for you"),
+                              CustomTitleHome(title: "Top Selling"),
                               ListItemsHome(),
                             ],
                           )
