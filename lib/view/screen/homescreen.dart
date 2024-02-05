@@ -2,6 +2,7 @@ import 'package:ecommerc/core/constant/routes/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/constant/color.dart';
+import '../../core/functions/alert_exit_app.dart';
 import '../../logic/controller/homescreen_controller.dart';
 import '../widget/home/custombottomappbarhome.dart';
 
@@ -22,7 +23,12 @@ class HomeScreen extends StatelessWidget {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
               bottomNavigationBar: const CustomBottomAppBarHome(),
-              body: controller.listPage.elementAt(controller.currentpage),
-            ));
+              body: PopScope(
+          canPop: false,
+          onPopInvoked: (didPop) {
+            alertExitApp();
+          },
+          child: controller.listPage.elementAt(controller.currentpage),
+            )));
   }
 }

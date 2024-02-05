@@ -45,6 +45,7 @@ dependencies:
   http: ^1.2.0
   jiffy: ^5.0.0
   lottie: ^3.0.0
+  rating_dialog: ^2.0.4
   url_launcher: ^6.2.4
 
 dev_dependencies:

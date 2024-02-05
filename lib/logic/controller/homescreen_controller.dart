@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../view/screen/home.dart';
 import '../../view/screen/notification.dart';
+import '../../view/screen/offers.dart';
 import '../../view/screen/settings.dart';
 
 abstract class HomeScreenController extends GetxController {
@@ -15,17 +16,14 @@ class HomeScreenControllerImp extends HomeScreenController {
   List<Widget> listPage = [
     const HomePage(),
     NotificationView(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("Profile"))],
-    ),
-  const Settings(),
+    OffersView(),
+    const Settings(),
   ];
 
- List bottomappbar = [
+  List bottomappbar = [
     {"title": "home", "icon": Icons.home},
     {"title": "n", "icon": Icons.notifications_active_outlined},
-    {"title": "profile", "icon": Icons.person_pin_sharp},
+    {"title": "profile", "icon": Icons.offline_bolt_outlined},
     {"title": "settings", "icon": Icons.settings}
   ];
 

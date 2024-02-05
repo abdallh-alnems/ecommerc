@@ -16,6 +16,7 @@ import '../../../view/screen/checkout.dart';
 import '../../../view/screen/items.dart';
 import '../../../view/screen/language.dart';
 import '../../../view/screen/myfavorite.dart';
+import '../../../view/screen/offers.dart';
 import '../../../view/screen/onboarding.dart';
 import '../../../view/screen/orders/archive.dart';
 import '../../../view/screen/orders/details.dart';
@@ -58,4 +59,10 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.ordersdetails, page: () => const OrdersDetails()),
    GetPage(
        name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
+       
+ GetPage(
+       name: AppRoute.offersView, page: () => const OffersView()),
+       
+
+       
 ];

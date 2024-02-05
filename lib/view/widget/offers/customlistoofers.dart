@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerc/core/constant/image_asset.dart';
 import 'package:ecommerc/logic/controller/items_controller.dart';
+import 'package:ecommerc/logic/controller/offers_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/color.dart';
@@ -9,15 +10,15 @@ import '../../../core/functions/translatedatebase.dart';
 import '../../../data/model/itemsmodel.dart';
 import '../../../logic/controller/favorite_controller.dart';
 
-class CustomListItems extends GetView<ItemsControllerImp> {
+class CustomListItemsOffers extends GetView<OffersController> {
   final ItemsModel itemsModel;
-  const CustomListItems({super.key, required this.itemsModel});
+  const CustomListItemsOffers({super.key, required this.itemsModel});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          controller.goToPageProductDetails(itemsModel);
+      
         },
         child: Card(
           child: Stack(
@@ -45,30 +46,30 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                               color: AppColor.black,
                               fontSize: 12,
                               fontWeight: FontWeight.bold)),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   children: [
-                      //     Text(
-                      //       "Rating 3.5 ",
-                      //       textAlign: TextAlign.center,
-                      //       style: TextStyle(fontSize: 11),
-                      //     ),
-                      //     Container(
-                      //       alignment: Alignment.bottomCenter,
-                      //       height: 16,
-                      //       child: Row(
-                      //         children: [
-                      //           ...List.generate(
-                      //               5,
-                      //               (index) => Icon(
-                      //                     Icons.star,
-                      //                     size: 12,
-                      //                   ))
-                      //         ],
-                      //       ),
-                      //     )
-                      //   ],
-                      // ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Rating 3.5 ",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 11),
+                          ),
+                          Container(
+                            alignment: Alignment.bottomCenter,
+                            height: 16,
+                            child: Row(
+                              children: [
+                                ...List.generate(
+                                    5,
+                                    (index) => Icon(
+                                          Icons.star,
+                                          size: 12,
+                                        ))
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
